@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo.DashboardController" prefWidth="800" prefHeight="600">
+
+    <!-- Верхнее меню навигации -->
+    <top>
+        <MenuBar style="-fx-background-color: white;">
+            <Menu text="Запросы" style="-fx-text-fill: white;">
+                <MenuItem text="Долги" onAction="#handleDebtQueryAction"/>
+                <MenuItem text="Разблокированные" onAction="#handleUnlockedClientsAction"/>
+                <MenuItem text="Звонки" onAction="#handleCallsQueryAction"/>
+                <MenuItem text="Номера клиентов" onAction="#handleClientNumbersAction"/> <!-- Новый пункт меню -->
+                <MenuItem text="Тарифы" onAction="#handleTariffsAction"/> <!-- Новый пункт меню для тарифов -->
+            </Menu>
+
+            <!-- Прочие пункты меню для примера -->
+            <!--<Menu text="Отчеты" style="-fx-text-fill: white;">
+                <MenuItem text="Отчет 1" />
+                <MenuItem text="Отчет 2" />
+                <MenuItem text="Отчет 3" />
+            </Menu> -->
+
+            <Menu text="Действия" style="-fx-text-fill: white;">
+                <MenuItem text="Добавить" onAction="#handleAddButtonAction"/> <!-- Вызов метода для добавления -->
+            </Menu>
+
+        </MenuBar>
+    </top>
+
+    <!-- Контейнер для таблиц -->
+    <center>
+        <StackPane>
+            <!-- Таблица для долгов -->
+            <TableView fx:id="debtTable" visible="false">
+                <columns>
+                    <!-- Колонки для отображения долгов -->
+                    <TableColumn text="ФИО" fx:id="fioColumn"/>
+                    <TableColumn text="Адрес" fx:id="addressColumn"/>
+                    <TableColumn text="Тариф" fx:id="tariffColumn"/>
+                    <TableColumn text="Цена" fx:id="priceColumn"/>
+                    <TableColumn text="Баланс" fx:id="balanceColumn"/>
+                    <TableColumn text="Заблокирован/Разблокирован" fx:id="statusColumn"/>
+                </columns>
+            </TableView>
+
+            <!-- Таблица для звонков -->
+            <TableView fx:id="callTable" visible="false">
+                <columns>
+                    <!-- Колонки для отображения звонков -->
+                    <TableColumn text="ФИО исходящего" fx:id="fioOutgoingColumn"/>
+                    <TableColumn text="ФИО входящего" fx:id="fioIncomingColumn"/>
+                    <TableColumn text="Номер исходящего" fx:id="outgoingNumberColumn"/>
+                    <TableColumn text="Номер входящего" fx:id="incomingNumberColumn"/>
+                </columns>
+            </TableView>
+
+            <!-- Таблица для номеров клиентов -->
+            <TableView fx:id="clientNumbersTable" visible="false">
+                <columns>
+                    <TableColumn text="ФИО" fx:id="clientFioColumn"/>
+                    <TableColumn text="Номер" fx:id="clientNumberColumn"/>
+                    <TableColumn text="Адрес" fx:id="clientAddressColumn"/>
+                    <TableColumn text="Модель" fx:id="clientModelColumn"/>
+                </columns>
+            </TableView>
+
+            <TableView fx:id="tariffTable" visible="false">
+                <columns>
+                    <TableColumn text="ФИО" fx:id="tariffFioColumn"/>
+                    <TableColumn text="Номер" fx:id="tariffNumberColumn"/>
+                    <TableColumn text="Тариф" fx:id="tariffTypeColumn"/>
+                    <TableColumn text="Цена" fx:id="tariffPriceColumn"/>
+                </columns>
+            </TableView>
+
+
+        </StackPane>
+    </center>
+
+</BorderPane>
